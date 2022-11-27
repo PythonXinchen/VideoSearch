@@ -5,22 +5,28 @@ from bs4 import BeautifulSoup
 import requests
 import tkinter
 #腾讯视频的请求头
-qqheaders = {
-    'cookie':'',
+headers = {
+    'cookie':'', #经过测试，好像这里加个cookie就能过？
     'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56'
 }
 
 Video_source = ['https://v.qq.com/x/search/?q=']
-headers = [qqheaders]
 
 
 #开始搜索
 def search_video(ViedoInput):
-    data = requests.get('https://v.qq.com/x/search/?q=' + ViedoInput,headers=qqheaders)
-    data.encoding='utf-8'
-    print(data.text)
+    for Video_source in range(len(Video_source)):
+        data = requests.get('https://v.qq.com/x/search/?q=' + ViedoInput,headers=headers)
+        data.encoding='utf-8'
+        print(data.text)
+        print(Video_source[0])
+        search_result()
 
-
+def search_result():
+    result = tkinter.Tk()
+    result.title(ViedoInput + '的搜索结果')
+    result.mainloop()
+    
 
 
 #获取输入框中的影视名
