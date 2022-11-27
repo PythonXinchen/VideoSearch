@@ -6,7 +6,7 @@ import requests
 import tkinter
 #腾讯视频的请求头
 headers = {
-    'cookie':'', #经过测试，好像这里加个cookie就能过？
+    'cookie':'', #好像这里加个cookie就能过？
     'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56'
 }
 
@@ -25,6 +25,7 @@ def search_video(ViedoInput):
         
 #对初始数据开始筛选有用信息
 def Processing_data(data):
+    
     
 
 #创建一个新窗口来显示搜索信息
