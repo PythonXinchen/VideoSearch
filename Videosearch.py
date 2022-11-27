@@ -10,21 +10,22 @@ headers = {
     'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56'
 }
 
-Video_source = ['https://v.qq.com/x/search/?q=']
+Video_source = ['https://v.qq.com/x/search/?q=','https://so.iqiyi.com/so/q_']
 
 
 #得到初始数据
 def search_video(ViedoInput):
     for i in Video_source:
-        data = requests.get('https://v.qq.com/x/search/?q=' + ViedoInput,headers=headers)
+        print(type(i))
+        data = requests.get(i + ViedoInput,headers=headers)
         data.encoding='utf-8'
         print(data.text)
-        print(Video_source[0])
-        Processing_data(data)
-        search_result(ViedoInput)
+        print(i)
+        #Processing_data(data)
+    search_result(ViedoInput)
         
 #对初始数据开始筛选信息
-def Processing_data(data):
+#def Processing_data(data):
     
     
 
