@@ -13,16 +13,22 @@ headers = {
 Video_source = ['https://v.qq.com/x/search/?q=']
 
 
-#开始搜索
+#得到初始数据
 def search_video(ViedoInput):
-    for Video_source in range(len(Video_source)):
+    for i in Video_source:
         data = requests.get('https://v.qq.com/x/search/?q=' + ViedoInput,headers=headers)
         data.encoding='utf-8'
         print(data.text)
         print(Video_source[0])
-        search_result()
+        Processing_data(data)
+        search_result(ViedoInput)
+        
+#对初始数据开始筛选有用信息
+def Processing_data(data):
+    
 
-def search_result():
+#创建一个新窗口来显示搜索信息
+def search_result(ViedoInput):
     result = tkinter.Tk()
     result.title(ViedoInput + '的搜索结果')
     result.mainloop()
