@@ -23,7 +23,7 @@ def search_video(ViedoInput):
         Processing_data(data)
         search_result(ViedoInput)
         
-#对初始数据开始筛选有用信息
+#对初始数据开始筛选信息
 def Processing_data(data):
     
     
