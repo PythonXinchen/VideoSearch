@@ -26,7 +26,7 @@ def search_video(ViedoInput):
         
 #对初始数据开始筛选信息
 def Processing_data(data):
-    
+    soup = beautifulsoup()
     
 
 #创建一个新窗口来显示搜索信息
