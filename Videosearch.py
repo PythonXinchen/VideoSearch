@@ -28,11 +28,12 @@ def search_video(ViedoInput):
 #对初始数据开始筛选信息
 def Processing_data(data):
     soup = BeautifulSoup(data,'html.parser')
-    for u in soup.find_all(name='a',href=True,_stat='video:poster_tle'): #查找电视的url
+    for u in soup.find_all(name='a',href=True,_stat='video:poster_tle'): #查找影视的url
         Video_url = u['href'] #获取'href'
         print(Video_url)
-    for n in soup.find_all(name='span',class_='sub'):
-        print(n)
+    print(soup.find(name='em',class_='hl').text) #显示影视name
+    for d in soup.find_all(name='span',class_='sub'):
+        print(d.text)
 
 #创建一个新窗口来显示搜索信息
 def search_result(ViedoInput):
