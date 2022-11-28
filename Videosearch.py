@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import requests
 import tkinter
 #腾讯视频的请求头
+data_list = []
 headers = {
     'cookie':'', #只加个cookie空就能过,腾讯视频,爱奇艺皆可使用
     'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56'
@@ -19,17 +20,16 @@ def search_video(ViedoInput):
         print(type(i))
         data = requests.get(i + ViedoInput,headers=headers)
         data.encoding='utf-8'
-        print(data.text)
-        print(i)
+        # print(data.text)
+        # print(i)
         Processing_data(data.text)
     search_result(ViedoInput)
         
 #对初始数据开始筛选信息
 def Processing_data(data):
     soup = BeautifulSoup(data,'html.parser')
-    for i in soup.find_all(name='em'):
-        print(i)
-        
+    for i in soup.find_all(name='h2'):
+        BeautifulSoup.find_all
 
 #创建一个新窗口来显示搜索信息
 def search_result(ViedoInput):
