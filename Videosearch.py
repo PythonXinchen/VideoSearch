@@ -10,7 +10,7 @@ headers = {
     'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56'
 }
 
-Video_source = ['https://v.qq.com/x/search/?q=','https://so.iqiyi.com/so/q_']
+Video_source = ['https://v.qq.com/x/search/?q=']
 
 
 #得到初始数据
@@ -21,13 +21,15 @@ def search_video(ViedoInput):
         data.encoding='utf-8'
         print(data.text)
         print(i)
-        Processing_data(data)
+        Processing_data(data.text)
     search_result(ViedoInput)
         
 #对初始数据开始筛选信息
 def Processing_data(data):
-    soup = beautifulsoup()
-    
+    soup = BeautifulSoup(data,'html.parser')
+    for i in soup.find_all(name='em'):
+        print(i)
+        
 
 #创建一个新窗口来显示搜索信息
 def search_result(ViedoInput):
