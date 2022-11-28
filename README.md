@@ -6,5 +6,5 @@
 目前已完成：  
 基本框架    
 完成对“腾讯视频”的搜索  
-![95ADFE77DF9839F50E85C9B1979AA15C](https://user-images.githubusercontent.com/96916718/204264351-e07af0ed-d9fc-4566-94e6-ab04ffa9c2a4.jpg)
+![95ADFE77DF9839F50E85C9B1979AA15C](https://user-images.githubusercontent.com/96916718/204264351-e07af0ed-d9fc-4566-94e6-ab04ffa9c2a4.jpg)  
 ↑图标↑
