@@ -7,7 +7,6 @@ import tkinter
 import webbrowser
 from tkinter import ttk
 #腾讯视频的请求头
-data_list = []
 headers = {
     'cookie':'', #只加个cookie空就能过,腾讯视频,爱奇艺皆可使用
     'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56'
@@ -16,10 +15,10 @@ headers = {
 Video_source = ['https://v.qq.com/x/search/?q=']
 
 def gotoz(url):
-    webbrowser.open_new(url=url)
+    webbrowser.open_new_tab(url=url)
 
 def gotofree(url):
-    webbrowser.open_new(url='https://bd.jx.cn/?url=' + url)
+    webbrowser.open_new_tab(url= "https://bd.jx.cn/?url=" + url)
 
 
 #得到初始数据
@@ -57,9 +56,9 @@ def search_result(name,detailed,Video_url):
     tree.column("网址", width=100,minwidth=100)
     tree.insert("",0, values=(name,detailed,Video_url))    # #给第0行添加数据，索引值可重复
     tree.pack(pady=20)
-    z = tkinter.Button(result,command=gotoz(url=Video_url),text="带我去官网访问")
+    z = tkinter.Button(result,command=lambda:gotoz(url=Video_url),text="带我去官网访问")
     z.pack()
-    f = tkinter.Button(result,command=gotofree(url=Video_url),text="带我去免费网站访问")
+    f = tkinter.Button(result,command=lambda:gotofree(url=Video_url),text="带我去免费网站访问")
     f.pack()
     result.mainloop()
     
