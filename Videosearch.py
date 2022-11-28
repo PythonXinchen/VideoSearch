@@ -4,6 +4,8 @@
 from bs4 import BeautifulSoup
 import requests
 import tkinter
+import webbrowser
+from tkinter import ttk
 #腾讯视频的请求头
 data_list = []
 headers = {
@@ -13,6 +15,12 @@ headers = {
 
 Video_source = ['https://v.qq.com/x/search/?q=']
 
+def gotoz(url):
+    webbrowser.open_new(url=url)
+
+def gotofree(url):
+    webbrowser.open_new(url='https://bd.jx.cn/?url=' + url)
+
 
 #得到初始数据
 def search_video(ViedoInput):
@@ -20,10 +28,7 @@ def search_video(ViedoInput):
         print(type(i))
         data = requests.get(i + ViedoInput,headers=headers)
         data.encoding='utf-8'
-        # print(data.text)
-        # print(i)
         Processing_data(data.text)
-    search_result(ViedoInput)
         
 #对初始数据开始筛选信息
 def Processing_data(data):
@@ -31,17 +36,33 @@ def Processing_data(data):
     for u in soup.find_all(name='a',href=True,_stat='video:poster_tle'): #查找影视的url
         Video_url = u['href'] #获取'href'
         print(Video_url)
-    print(soup.find(name='em',class_='hl').text) #显示影视name
+    name = soup.find(name='em',class_='hl').text #显示影视name
     for d in soup.find_all(name='span',class_='sub'):
-        print(d.text)
+        detailed = d.text
+        search_result(name=name,detailed=detailed,Video_url=Video_url)
+
 
 #创建一个新窗口来显示搜索信息
-def search_result(ViedoInput):
+def search_result(name,detailed,Video_url):
     result = tkinter.Tk()
-    result.title(ViedoInput + '的搜索结果')
+    result.geometry("600x500+200+20")
+    result.title('的搜索结果')
+    tree = ttk.Treeview(result)
+    tree["columns"] = ("影视名","基本信息","网址")
+    tree.heading("影视名", text="影视名")        # #设置显示的表头名
+    tree.heading("基本信息", text="基本信息")
+    tree.heading("网址", text="网址")
+    tree.column("影视名", width=100,minwidth=100)          # #设置列
+    tree.column("基本信息", width=100,minwidth=100)
+    tree.column("网址", width=100,minwidth=100)
+    tree.insert("",0, values=(name,detailed,Video_url))    # #给第0行添加数据，索引值可重复
+    tree.pack(pady=20)
+    z = tkinter.Button(result,command=gotoz(url=Video_url),text="带我去官网访问")
+    z.pack()
+    f = tkinter.Button(result,command=gotofree(url=Video_url),text="带我去免费网站访问")
+    f.pack()
     result.mainloop()
     
-
 
 #获取输入框中的影视名
 def getVideoTextInput():
