@@ -8,7 +8,7 @@ import webbrowser
 from tkinter import ttk
 #腾讯视频的请求头
 headers = {
-    'cookie':'', #只加个cookie空就能过,腾讯视频,爱奇艺皆可使用
+    'cookie':'', #只加个cookie空就能过
     'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.56'
 }
 
