@@ -28,8 +28,7 @@ def search_video(ViedoInput):
 #对初始数据开始筛选信息
 def Processing_data(data):
     soup = BeautifulSoup(data,'html.parser')
-    for i in soup.find_all(name='a',_stat='video:poster_tle'):
-        print(i)
+    print(soup.find_all(name='a',_stat='video:poster_tle'))
 
 #创建一个新窗口来显示搜索信息
 def search_result(ViedoInput):
