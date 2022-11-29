@@ -27,10 +27,10 @@ def search_video(ViedoInput):
         print(type(i))
         data = requests.get(i + ViedoInput,headers=headers)
         data.encoding='utf-8'
-        Processing_data(data.text)
+        Processing_data(data.text,ViedoInput=ViedoInput)
         
 #对初始数据开始筛选信息
-def Processing_data(data):
+def Processing_data(data,ViedoInput):
     soup = BeautifulSoup(data,'html.parser')
     for u in soup.find_all(name='a',href=True,_stat='video:poster_tle'): #查找影视的url
         Video_url = u['href'] #获取'href'
@@ -38,14 +38,14 @@ def Processing_data(data):
     name = soup.find(name='em',class_='hl').text #显示影视name
     for d in soup.find_all(name='span',class_='sub'):
         detailed = d.text
-        search_result(name=name,detailed=detailed,Video_url=Video_url)
+    search_result(name=name,detailed=detailed,Video_url=Video_url,ViedoInput=ViedoInput)
 
 
 #创建一个新窗口来显示搜索信息
-def search_result(name,detailed,Video_url):
+def search_result(name,detailed,Video_url,ViedoInput):
     result = tkinter.Tk()
     result.geometry("600x500+200+20")
-    result.title(name + '的搜索结果')
+    result.title(ViedoInput + '的搜索结果')
     tree = ttk.Treeview(result)
     tree["columns"] = ("影视名","基本信息","网址")
     tree.heading("影视名", text="影视名")        # #设置显示的表头名
