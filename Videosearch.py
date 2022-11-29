@@ -45,7 +45,7 @@ def Processing_data(data):
 def search_result(name,detailed,Video_url):
     result = tkinter.Tk()
     result.geometry("600x500+200+20")
-    result.title('的搜索结果')
+    result.title(name + '的搜索结果')
     tree = ttk.Treeview(result)
     tree["columns"] = ("影视名","基本信息","网址")
     tree.heading("影视名", text="影视名")        # #设置显示的表头名
