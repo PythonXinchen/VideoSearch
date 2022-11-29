@@ -46,6 +46,7 @@ def search_result(name,detailed,Video_url,ViedoInput):
     result = tkinter.Tk()
     result.geometry("600x500+200+20")
     result.title(ViedoInput + '的搜索结果')
+    result.iconbitmap('icon.ico')
     tree = ttk.Treeview(result)
     tree["columns"] = ("影视名","基本信息","网址")
     tree.heading("影视名", text="影视名")        # #设置显示的表头名
@@ -72,6 +73,7 @@ def getVideoTextInput():
 #初始化图形界面
 top = tkinter.Tk()
 top.title('影视搜索')
+top.iconbitmap('icon.ico')
 
 #提供输入影视名的输入框
 video_text = tkinter.Entry(top, text='影视名:')
