@@ -36,8 +36,7 @@ def Processing_data(data,ViedoInput):
         Video_url = u['href'] #获取'href'
         print(Video_url)
     name = soup.find(name='em',class_='hl').text #显示影视name
-    for d in soup.find_all(name='span',class_='sub'):
-        detailed = d.text
+    detailed = soup.find_all(name='span',class_='sub')[0].text
     search_result(name=name,detailed=detailed,Video_url=Video_url,ViedoInput=ViedoInput)
 
 
@@ -59,7 +58,7 @@ def search_result(name,detailed,Video_url,ViedoInput):
     tree.pack(pady=20)
     z = tkinter.Button(result,command=lambda:gotoz(url=Video_url),text="带我去官网访问")
     z.pack()
-    f = tkinter.Button(result,command=lambda:gotofree(url=Video_url),text="带我去免费网站访问")
+    f = tkinter.Button(result,command=lambda:gotofree(url=Video_url),text="让我白嫖")
     f.pack()
     result.mainloop()
     
