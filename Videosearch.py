@@ -1,4 +1,4 @@
-#1.bilibili
+#1.bilibili（划掉）
 #2.腾讯视频
 #3.爱奇艺
 from bs4 import BeautifulSoup
@@ -6,6 +6,7 @@ import requests
 import tkinter
 import webbrowser
 from tkinter import ttk
+import messagebox
 #腾讯视频的请求头
 headers = {
     'cookie':'', #只加个cookie空就能过
@@ -36,8 +37,12 @@ def Processing_data(data,ViedoInput):
         Video_url = u['href'] #获取'href'
         print(Video_url)
     name = soup.find(name='em',class_='hl').text #显示影视name
-    detailed = soup.find_all(name='span',class_='sub')[0].text
-    search_result(name=name,detailed=detailed,Video_url=Video_url,ViedoInput=ViedoInput)
+    try:
+        detailed = soup.find_all(name='span',class_='sub')[0].text
+        search_result(name=name,detailed=detailed,Video_url=Video_url,ViedoInput=ViedoInput)
+    except IndexError:
+        messagebox.showwarning('警告','未找到相关匹配内容')
+        
 
 
 #创建一个新窗口来显示搜索信息
@@ -72,7 +77,7 @@ def getVideoTextInput():
 #初始化图形界面
 top = tkinter.Tk()
 top.title('影视搜索')
-top.iconbitmap('icon.ico')
+#top.iconbitmap('icon.ico')
 
 #提供输入影视名的输入框
 video_text = tkinter.Entry(top, text='影视名:')
