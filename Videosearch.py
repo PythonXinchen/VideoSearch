@@ -83,7 +83,7 @@ top.title('影视搜索')
 # top.iconbitmap('icon.ico')
 
 # 提供输入影视名的输入框
-video_text = tkinter.Entry(top, text='影视名:')
+video_text = tkinter.Entry(top)
 video_text.pack(side='left')
 
 # 搜索按钮
